@@ -15,10 +15,10 @@ RUN mkdir "$ANDROID_HOME" .android \
     
 # Install Android Build Tool and Libraries
 RUN $ANDROID_HOME/tools/bin/sdkmanager --update
-RUN $ANDROID_HOME/tools/bin/sdkmanager
-"build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
+RUN $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS_VERSION}" \
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools"
+    
 FROM gradle:8.1.1-jdk11-alpine
 RUN gradle init
 RUN gradle wrapper
